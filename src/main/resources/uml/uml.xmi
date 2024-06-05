@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.documentation>
+            <XMI.exporter>PlantUML</XMI.exporter>
+            <XMI.exporterVersion>1.2024.3</XMI.exporterVersion>
+        </XMI.documentation>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.4"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Class isInterface="true" name="ReprodutorMusical" xmi.id="cl0002">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="tocar()" visibility="public" xmi.id="att21"/>
+                        <UML:Operation name="pausar()" visibility="public" xmi.id="att22"/>
+                        <UML:Operation name="selecionarMusica()" visibility="public" xmi.id="att23"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class isInterface="true" name="AparelhoTelefonico" xmi.id="cl0003">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="ligar()" visibility="public" xmi.id="att24"/>
+                        <UML:Operation name="atender()" visibility="public" xmi.id="att25"/>
+                        <UML:Operation name="iniciarCorreioVoz()" visibility="public" xmi.id="att26"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class isInterface="true" name="NavegadorInternet" xmi.id="cl0004">
+                    <UML:Classifier.feature>
+                        <UML:Operation name="exibirPagina()" visibility="public" xmi.id="att27"/>
+                        <UML:Operation name="adicionarNovaAba()" visibility="public" xmi.id="att28"/>
+                        <UML:Operation name="atualizarPagina()" visibility="public" xmi.id="att29"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="ReprodutorMusicalPadrao" xmi.id="cl0005">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="listaMusicas: List&lt;String&gt;" visibility="private" xmi.id="att30"/>
+                        <UML:Attribute name="musicaAtual: String" visibility="private" xmi.id="att31"/>
+                        <UML:Operation name="tocar()" visibility="public" xmi.id="att32"/>
+                        <UML:Operation name="pausar()" visibility="public" xmi.id="att33"/>
+                        <UML:Operation name="selecionarMusica()" visibility="public" xmi.id="att34"/>
+                        <UML:Operation name="adicionarMusica(String musica)" visibility="public" xmi.id="att35"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="AparelhoTelefonicoPadrao" xmi.id="cl0006">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="numero: String" visibility="private" xmi.id="att36"/>
+                        <UML:Operation name="ligar()" visibility="public" xmi.id="att37"/>
+                        <UML:Operation name="atender()" visibility="public" xmi.id="att38"/>
+                        <UML:Operation name="iniciarCorreioVoz()" visibility="public" xmi.id="att39"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="NavegadorInternetPadrao" xmi.id="cl0007">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="historico: List&lt;String&gt;" visibility="private" xmi.id="att40"/>
+                        <UML:Operation name="exibirPagina()" visibility="public" xmi.id="att41"/>
+                        <UML:Operation name="adicionarNovaAba()" visibility="public" xmi.id="att42"/>
+                        <UML:Operation name="atualizarPagina()" visibility="public" xmi.id="att43"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="IPhone" xmi.id="cl0008">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="reprodutor: ReprodutorMusicalPadrao" visibility="private" xmi.id="att44"/>
+                        <UML:Attribute name="telefone: AparelhoTelefonicoPadrao" visibility="private" xmi.id="att45"/>
+                        <UML:Attribute name="navegador: NavegadorInternetPadrao" visibility="private" xmi.id="att46"/>
+                        <UML:Operation name="tocar()" visibility="public" xmi.id="att47"/>
+                        <UML:Operation name="pausar()" visibility="public" xmi.id="att48"/>
+                        <UML:Operation name="selecionarMusica()" visibility="public" xmi.id="att49"/>
+                        <UML:Operation name="ligar()" visibility="public" xmi.id="att50"/>
+                        <UML:Operation name="atender()" visibility="public" xmi.id="att51"/>
+                        <UML:Operation name="iniciarCorreioVoz()" visibility="public" xmi.id="att52"/>
+                        <UML:Operation name="exibirPagina()" visibility="public" xmi.id="att53"/>
+                        <UML:Operation name="adicionarNovaAba()" visibility="public" xmi.id="att54"/>
+                        <UML:Operation name="atualizarPagina()" visibility="public" xmi.id="att55"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="IphoneApp" xmi.id="cl0009">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="iphone: IPhone" visibility="private" xmi.id="att56"/>
+                        <UML:Operation name="iniciar()" visibility="public" xmi.id="att57"/>
+                        <UML:Operation name="main(String[] args)" visibility="public" xmi.id="att58"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="View" xmi.id="cl0011">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="scanner: Scanner" visibility="private" xmi.id="att59"/>
+                        <UML:Operation name="View()" visibility="public" xmi.id="att60"/>
+                        <UML:Operation name="exibirMenu()" visibility="public" xmi.id="att61"/>
+                        <UML:Operation name="lerOpcao()" visibility="public" xmi.id="att62"/>
+                        <UML:Operation name="exibirMensagem(String mensagem)" visibility="public" xmi.id="att63"/>
+                        <UML:Operation name="fecharScanner()" visibility="public" xmi.id="att64"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>

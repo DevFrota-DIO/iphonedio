@@ -1,0 +1,94 @@
+@startuml
+
+interface ReprodutorMusical {
+    {abstract} + tocar()
+    {abstract} + pausar()
+    {abstract} + selecionarMusica()
+}
+
+interface AparelhoTelefonico {
+    {abstract} + ligar()
+    {abstract} + atender()
+    {abstract} + iniciarCorreioVoz()
+}
+
+interface NavegadorInternet {
+    {abstract} + exibirPagina()
+    {abstract} + adicionarNovaAba()
+    {abstract} + atualizarPagina()
+}
+
+class ReprodutorMusicalPadrao {
+    - listaMusicas: List<String>
+    - musicaAtual: String
+
+    + tocar()
+    + pausar()
+    + selecionarMusica()
+    + adicionarMusica(String musica)
+}
+
+class AparelhoTelefonicoPadrao {
+    - numero: String
+
+    + ligar()
+    + atender()
+    + iniciarCorreioVoz()
+}
+
+class NavegadorInternetPadrao {
+    - historico: List<String>
+
+    + exibirPagina()
+    + adicionarNovaAba()
+    + atualizarPagina()
+}
+
+class IPhone {
+    - reprodutor: ReprodutorMusicalPadrao
+    - telefone: AparelhoTelefonicoPadrao
+    - navegador: NavegadorInternetPadrao
+
+    + tocar()
+    + pausar()
+    + selecionarMusica()
+    + ligar()
+    + atender()
+    + iniciarCorreioVoz()
+    + exibirPagina()
+    + adicionarNovaAba()
+    + atualizarPagina()
+}
+
+class IphoneApp {
+    - iphone: IPhone
+
+    + iniciar()
+    + main(String[] args)
+}
+
+package UI {
+    class View {
+        - scanner: Scanner
+
+        + View()
+        + exibirMenu()
+        + lerOpcao()
+        + exibirMensagem(String mensagem)
+        + fecharScanner()
+    }
+}
+
+ReprodutorMusical <|.. ReprodutorMusicalPadrao
+AparelhoTelefonico <|.. AparelhoTelefonicoPadrao
+NavegadorInternet <|.. NavegadorInternetPadrao
+
+IPhone --|> ReprodutorMusical: reprodutor
+IPhone --|> AparelhoTelefonico: telefone
+IPhone --|> NavegadorInternet: navegador
+
+IphoneApp -- IPhone: iphone
+IphoneApp .> UI.View: usa
+UI.View --> IphoneApp: interage
+
+@enduml

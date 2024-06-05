@@ -1,0 +1,235 @@
+@startuml
+left to right direction
+
+' Classes e Interfaces
+class view.view_model.pacbrowser.DevBookmarks {
+    - List<Bookmark> listBookmarks
+    + <<Create>> DevBookmarks(List<Bookmark>)
+}
+
+interface view.view_interfaces.IDevTelephone {
+    ~ void makeCall(Contact)
+    ~ void answerCall(String)
+    ~ void voiceMail()
+    ~ List<Contact> getContacts()
+}
+
+interface view.view_interfaces.IDevBrowser {
+    ~ void loadPage(Page)
+    ~ void updatePage(Page)
+    ~ void newTab(int,String,String)
+    ~ List<Bookmark> getDevListBookmarks()
+}
+
+interface view.view_interfaces.IDevDao {
+    + List<Object> getData(String)
+}
+
+class view.view_model.pacplayer.DevPlayerAction {
+    - DevPlaylist devPlaylist
+    + <<Create>> DevPlayerAction()
+    + void playPlaylist(Media)
+    + void play()
+    + void pause()
+    + void selectMusic(int)
+    + List<Media> getMediaList()
+}
+
+class view.view_model.pactelephone.Call {
+    - String phoneNumber
+    - LocalDateTime startTime
+    - LocalDateTime endTime
+    - boolean active
+    + <<Create>> Call(String)
+    + String getPhoneNumber()
+    + void setPhoneNumber(String)
+    + LocalDateTime getStartTime()
+    + void setStartTime(LocalDateTime)
+    + LocalDateTime getEndTime()
+    + void setEndTime(LocalDateTime)
+    + boolean isActive()
+    + void setActive(boolean)
+    + void endCall()
+}
+
+class view.view_principal.View {
+    - Iphone iphone
+    - DevConfigView configView
+    - DevConfigLanguage newLang
+    + <<Create>> View()
+    + String searchMessages(String)
+    + void print(String,DevConfigLanguage)
+    + void printListMedia(List<Media>)
+    + void printListContacts(List<Contact>)
+    + void printListBookmarks(List<Bookmark>)
+    + void printMedia(Media)
+    + void printMakeCall(Contact)
+    + void printMenssage(String)
+    + void printVoiceMail()
+    + void printList(String)
+    - int caseScan()
+    + void iphoneContinue()
+    + void printAcction(String,String,String)
+}
+
+class view.view_model.pactelephone.Contacts {
+    - List<Contact> contactList
+    + <<Create>> Contacts()
+    + List<Contact> getContactList()
+}
+
+class view.Iphone {
+    - IDevPlayer iplayer
+    - IDevBrowser ibrowser
+    - IDevTelephone itelephone
+    + <<Create>> Iphone()
+    + void loadPage(Page)
+    + void updatePage(Page)
+    + void newTab(int,String,String)
+    + List<Bookmark> getDevListBookmarks()
+    + void play()
+    + void pause()
+    + void selectMusic(int)
+    + List<Media> getPlaylist()
+    + void makeCall(Contact)
+    + void answerCall(String)
+    + void voiceMail()
+    + List<Contact> getContacts()
+    + void playPlaylist(Media)
+}
+
+class view.view_config.DevConfigLanguage {
+    - String language
+    - String activeLanguage
+    - {static} int on
+    ~ {static} Logger logger
+    - {static} String PATCH_MENU_FILE
+    - {static} String PATCH_STRING_FILE
+    - {static} String LANGUAGE_DIRECTORY
+    - {static} Properties languagesProperties
+    - {static} Properties menuProperties
+    - {static} Properties stringsProperties
+    + <<Create>> DevConfigLanguage()
+    + String getLanguage()
+    + String getActiveLanguage()
+    + void setActiveLanguage(String)
+    + void setLanguage(String)
+    + {static} void runProperties(String,Properties)
+    + Properties getStringsProperties()
+    + void setStringsProperties(String)
+    + Properties getLanguagesProperties()
+    + void setLanguagesProperties(String)
+    + Properties getMenuProperties()
+    + void setMenuProperties(String)
+    + void runMenu()
+    + int getOn()
+    + void setOn(int)
+}
+
+class view.view_model.pactelephone.DevTelephone {
+    - Call call
+    - Contacts contacts
+    + <<Create>> DevTelephone()
+    + void makeCall(Contact)
+    + void answerCall(String)
+    + void voiceMail()
+    + List<Contact> getContacts()
+}
+
+interface view.view_interfaces.IDevPlayer {
+    ~ void play()
+    ~ void playPlaylist(Media)
+    ~ void pause()
+    ~ void selectMusic(int)
+    ~ List<Media> getPlaylist()
+}
+
+class view.view_model.pacplayer.DevPlaylist {
+    - List<Media> mediaList
+    + <<Create>> DevPlaylist()
+    + void addMedia(Media)
+}
+
+class view.view_config.DevConfigView {
+    - Properties langProps
+    - Properties menuProps
+    - DevConfigLanguage newLang
+    - View oneView
+    - {static} String LANGUAGE_DIRECTORY
+    - {static} String LANGUAGE_FILE
+    - {static} String STRINGS_FILE
+    - {static} String MENU_FILE
+    - {static} String PATCH_LANGUAGE
+    - {static} String STRING_DIRECTORY
+    - {static} String PATCH_MENU
+    + <<Create>> DevConfigView()
+    + void start()
+    + void setStringDirectory(String)
+    + String getStringDirectory()
+    + String option(ArrayList<String>)
+    + void displayMenu()
+    - void setPatchMenu(String)
+    - void configMenu()
+    - void userActionOne(String,String,String)
+    - void userActionTwo(String,String)
+    + Properties searchStrings(String)
+    + String printAllMenu(Properties)
+    + {static} ArrayList<String> printAllProperties(Properties)
+    - Properties configLanguage()
+}
+
+class view.view_model.pacplayer.DevPlayer {
+    - DevPlayerAction devPlayerAction
+    + <<Create>> DevPlayer()
+    + void play()
+    + void playPlaylist(Media)
+    + void pause()
+    + void selectMusic(int)
+    + List<Media> getPlaylist()
+}
+
+class view.view_model.pacbrowser.DevBrowser {
+    - DevBookmarks devBookmarks
+    - Page page
+    - Tab tab
+    + <<Create>> DevBrowser()
+    + void loadPage(Page)
+    + void updatePage(Page)
+    + void newTab(int,String,String)
+    + List<Bookmark> getDevListBookmarks()
+}
+
+class view.view_model.pacbrowser.Tab {
+    - int id
+    - String url
+    - String contentPage
+    + <<Create>> Tab(int,String,String)
+    + <<Create>> Tab()
+}
+
+' Relacionamentos
+view.view_interfaces.IDevTelephone <|.. view.view_model.pactelephone.DevTelephone
+view.view_interfaces.IDevPlayer <|.. view.view_model.pacplayer.DevPlayer
+view.view_interfaces.IDevBrowser <|.. view.view_model.pacbrowser.DevBrowser
+
+view.view_principal.View o-- view.Iphone
+view.view_principal.View o-- view.view_config.DevConfigView
+view.view_principal.View o-- view.view_config.DevConfigLanguage
+
+view.view_model.pacbrowser.DevBrowser o-- view.view_model.pacbrowser.DevBookmarks
+view.view_model.pacbrowser.DevBrowser o-- view.view_model.pacbrowser.Tab
+
+view.Iphone o-- view.view_model.pactelephone.DevTelephone
+view.Iphone o-- view.view_model.pacplayer.DevPlayer
+view.Iphone o-- view.view_model.pacbrowser.DevBrowser
+
+view.view_model.pacplayer.DevPlayerAction o-- view.view_model.pacplayer.DevPlaylist
+view.view_model.pactelephone.DevTelephone o-- view.view_model.pactelephone.Call
+view.view_model.pactelephone.DevTelephone o-- view.view_model.pactelephone.Contacts
+
+' Exemplo de caminho percorrido após a chamada do método start()
+view.view_config.DevConfigView : start() --> view.view_principal.View
+view.view_principal.View : iphoneContinue() --> view.Iphone
+view.Iphone : loadPage(Page) --> view.view_model.pacbrowser.DevBrowser
+
+@enduml

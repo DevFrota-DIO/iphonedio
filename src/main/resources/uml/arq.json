@@ -1,0 +1,9 @@
+{
+    "interface": "ReprodutorMusical",
+    "methods": [
+      { "name": "tocar", "returnType": "void" },
+      { "name": "pausar", "returnType": "void" },
+      { "name": "selecionarMusica", "returnType": "void" }
+    ]
+  }
+  

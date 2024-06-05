@@ -1,0 +1,89 @@
+@startuml
+' Definindo a direção do layout
+left to right direction
+
+package com.devfrota.iphonedio {
+
+    package controller {
+        class Controller
+    }
+
+    package architecture {
+        package model {
+            package pacbrowser {
+                class Page
+                class Bookmark
+                class Bookmarks
+            }
+
+            package pacplayer {
+                class Media
+                class Playlist
+            }
+
+            package pactelephone {
+                class Contact
+                class Contacts
+            }
+
+            package paciphone {
+                class Iphone
+            }
+        }
+
+        package dao {
+            class DaoImplements
+        }
+
+        package data {
+            class DataTelephone
+            class DataBrowser
+            class DataMusic
+        }
+
+        package services {
+            class ServiceData
+            class ServiceApp
+        }
+
+        package work {
+            package interfaces {
+                interface ITelephone
+                interface IDao
+                interface IBrowser
+                interface IPlayer
+            }
+
+            package factories {
+                class ControllerFactory
+                class ServiceFactory
+                class ModelFactory
+                class ViewFactory
+            }
+        }
+    }
+
+    package principal {
+        class IphoneApp
+    }
+}
+
+controller.architecture.work.interfaces.ITelephone <|.. controller.architecture.model.pactelephone.Contacts
+controller.architecture.work.interfaces.IDao <|.. controller.architecture.dao.DaoImplements
+controller.architecture.work.interfaces.IBrowser <|.. controller.architecture.model.pacbrowser.Bookmarks
+controller.architecture.work.interfaces.IPlayer <|.. controller.architecture.model.pacplayer.Playlist
+
+controller.Controller *-- controller.architecture.services.ServiceApp
+controller.architecture.model.pacbrowser.Bookmarks *-- controller.architecture.model.pacbrowser.Bookmark
+controller.architecture.model.pactelephone.Contacts *-- controller.architecture.model.pactelephone.Contact
+controller.architecture.model.pacplayer.Playlist *-- controller.architecture.model.pacplayer.Media
+controller.architecture.model.paciphone.Iphone *-- controller.architecture.work.interfaces.IPlayer
+controller.architecture.model.paciphone.Iphone *-- controller.architecture.work.interfaces.IBrowser
+controller.architecture.model.paciphone.Iphone *-- controller.architecture.work.interfaces.ITelephone
+controller.architecture.services.ServiceApp *-- controller.architecture.model.paciphone.Iphone
+controller.architecture.services.ServiceData *-- controller.architecture.work.interfaces.IDao
+controller.architecture.dao.DaoImplements *-- controller.architecture.data.DataMusic
+controller.architecture.dao.DaoImplements *-- controller.architecture.data.DataTelephone
+controller.architecture.dao.DaoImplements *-- controller.architecture.data.DataBrowser
+
+@enduml
