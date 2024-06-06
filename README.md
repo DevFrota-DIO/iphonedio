@@ -2,7 +2,7 @@
 
 ##### Modelagem e Diagramação de um Componente iPhone
 
-- Sob orientação do especialista  [**Venilton FalvoJr (falvojr)**](https://github.com/falvojr), Tech Lead no time de Educação da DIO.
+- Sob orientação do especialista  [**Gleyson Sampaio**](https://github.com/glysns), Tech Lead no time de Educação da DIO.
 
 ------
 
@@ -41,7 +41,7 @@ Ademais:
 
 #### 👉[**DIO**](https://web.dio.me/)
 
-#### 👉 GitHub do nosso expert [**Venilton FalvoJr (falvojr)**](https://github.com/falvojr)
+#### 👉 GitHub do nosso expert [**Gleyson Sampaio**](https://github.com/glysns)
 
 
 
